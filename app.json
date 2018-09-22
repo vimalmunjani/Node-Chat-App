@@ -1,0 +1,21 @@
+{
+  "name": "Node-Chat-App",
+  "description": "A chat App using socket.io",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
