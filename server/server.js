@@ -20,10 +20,10 @@ io.on('connection', (socket) => {
     console.log(`New User connected`);
 
     // send a message to the one who connets
-    socket.emit('newMessage',generateMessage(`Admin`, `Welcome to Chat App`));
+    socket.emit('newMessage', generateMessage(`Admin`, `Welcome to Chat App`));
 
     // send the message to everyone except the one who sent
-    socket.broadcast.emit('newMessage',generateMessage(`Admin`, `New User joined`));
+    socket.broadcast.emit('newMessage', generateMessage(`Admin`, `New User joined`));
 
     // when a message is received from a user
     socket.on('createMessage', (message) => {
