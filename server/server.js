@@ -33,6 +33,15 @@ io.on('connection', (socket) => {
 
     });
 
+    // when a location message is received from a user
+    socket.on('createLocationMessage', (locationMessage) => {
+
+        console.log('locationMessage',locationMessage);
+         // send the received location message to everyone including the one who sent
+         io.emit('newMessage', generateMessage(locationMessage.from, locationMessage.text));
+
+    });
+
     socket.on('disconnect', () => {
         console.log(`User was disconnected`);
     });
