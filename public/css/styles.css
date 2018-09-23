@@ -1,0 +1,68 @@
+* {
+    color: blue;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+    grid-template-areas:
+        "l  m   m   m   m   m"
+        "l  m   m   m   m   m"
+        "l  m   m   m   m   m"
+        "l  m   m   m   m   m"
+        "l  m   m   m   m   m"
+        "l  b   b   b   b   b";
+
+    background-color: lightgray;
+    height: 100%;
+}
+
+#left-section {
+    background-color: lightblue;
+    grid-area: l;
+}
+
+#main-section {
+  
+    grid-area: m;
+
+    padding: 25px;
+}
+
+/* Bottom section */
+#bottom-section {
+    background-color: lightgrey;
+    grid-area: b;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#location-div {
+    display: inline;
+}
+
+#message-form {
+    display: inline;
+}
+
+#message {
+    margin: 5px;
+}
+
+#send-location {
+    margin: 5px;
+}
+
+#send-button {
+    margin: 5px;
+}
