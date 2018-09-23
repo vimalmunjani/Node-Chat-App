@@ -6,21 +6,26 @@ socket.on('connect', function () {
 
 
 socket.on('newMessage', function (message) {
+
+    let createdTime = moment(message.createdAt).format('h:mm a');
     console.log('newMessage', message);
 
     var list = $('<li></li>');
-    list.text(`${message.from}: ${message.text} `);
+    list.text(`${message.from} ${createdTime}: ${message.text} `);
 
     $('#messages').append(list);
 });
 
 socket.on('newLocationMessage', function (locationMessage) {
+
+    let createdTime = moment(message.createdAt).format('h:mm a');
+
     console.log('newLocationMessage', locationMessage);
 
     var list = $('<li></li>');
     var a = $('<a target="_blank">My current location</a>');
 
-    list.text(`${locationMessage.from}: `);
+    list.text(`${locationMessage.from} ${createdTime}: `);
     a.attr('href', locationMessage.url);
 
     list.append(a);
