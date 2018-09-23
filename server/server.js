@@ -4,7 +4,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 
 // utils
-const generateMessage = require('./utils/message');
+const {generateMessage, genarateLocationMessage} = require('./utils/message');
 
 const publicPath = path.join(__dirname, '../public')
 const port = process.env.PORT || 3000;
@@ -36,9 +36,10 @@ io.on('connection', (socket) => {
     // when a location message is received from a user
     socket.on('createLocationMessage', (locationMessage) => {
 
-        console.log('locationMessage',locationMessage);
-         // send the received location message to everyone including the one who sent
-         io.emit('newMessage', generateMessage(locationMessage.from, locationMessage.text));
+        console.log('locationMessage', locationMessage);
+
+        // send the received location message to everyone including the one who sent
+        io.emit('newLocationMessage', genarateLocationMessage(locationMessage.from, locationMessage.latitude, locationMessage.longitude));
 
     });
 
