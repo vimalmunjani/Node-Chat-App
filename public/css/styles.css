@@ -1,7 +1,7 @@
 * {
-    color: blue;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 html {
@@ -30,8 +30,9 @@ body {
 }
 
 #main-section {
-  
+
     grid-area: m;
+    overflow-x: hidden;
 
     padding: 25px;
 }
@@ -65,4 +66,36 @@ body {
 
 #send-button {
     margin: 5px;
+}
+
+.chat-message {
+    background-color: lightblue;
+    padding: 8px;
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 5px;
+}
+
+.chat-message-title > p{
+    font-size: 13px;
+    font-weight: 600;
+    display: inline;
+    color: darkslategray;
+}
+
+.chat-message-title > span{
+    font-size: 13px;
+    font-weight: 500;
+    display: inline;
+    color: darkslategray;
+}
+
+.chat-message-body{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-align: center;
 }

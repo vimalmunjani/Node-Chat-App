@@ -10,10 +10,19 @@ socket.on('newMessage', function (message) {
     let createdTime = moment(message.createdAt).format('h:mm a');
     console.log('newMessage', message);
 
-    var list = $('<li></li>');
-    list.text(`${message.from} ${createdTime}: ${message.text} `);
+    let template = $('#message-template').html();
+    let html = Mustache.render(template,{
+        text: message.text,
+        from: message.from,
+        createdAt: createdTime
+    });
 
-    $('#messages').append(list);
+    $('#messages').append(html);
+
+    // var list = $('<li></li>');
+    // list.text(`${message.from} ${createdTime}: ${message.text} `);
+
+    // $('#messages').append(list);
 });
 
 socket.on('newLocationMessage', function (locationMessage) {
@@ -22,15 +31,15 @@ socket.on('newLocationMessage', function (locationMessage) {
 
     console.log('newLocationMessage', locationMessage);
 
-    var list = $('<li></li>');
-    var a = $('<a target="_blank">My current location</a>');
+    let template = $('#location-message-template').html();
+    let html = Mustache.render(template,{
+        url: locationMessage.url,
+        from: locationMessage.from,
+        createdAt: createdTime
+    });
 
-    list.text(`${locationMessage.from} ${createdTime}: `);
-    a.attr('href', locationMessage.url);
+    $('#messages').append(html);
 
-    list.append(a);
-
-    $('#messages').append(list);
 });
 
 socket.on('disconnect', function () {
